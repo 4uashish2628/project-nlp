@@ -1,0 +1,52 @@
+# Literature Review
+
+## Overview
+
+Lexical diversity measures how varied a text's vocabulary is. In NLP and corpus linguistics, it is often used to compare genres, proficiency levels, discourse styles, or clinical language samples. However, the literature consistently warns that lexical diversity is not captured well by a single metric, especially when text lengths differ.
+
+## Brown Corpus As A Benchmark Dataset
+
+The Brown Corpus is a standard benchmark for genre-based lexical studies because it contains more than one million words of edited American English distributed across multiple genres. Its balanced genre structure makes it appropriate for cross-genre comparison tasks like this project [1].
+
+## Why Simple TTR Is Not Enough
+
+The classic Type-Token Ratio (TTR) is calculated as the number of unique words divided by the total number of words. Although simple to compute, it is highly sensitive to text length. As sample size increases, repeated words accumulate and TTR usually drops, which makes direct comparison across unequal texts unreliable [2][3].
+
+## Robust Alternatives In The Literature
+
+Researchers proposed several alternatives to reduce sample-size bias:
+
+- **MATTR** computes TTR over a moving window and averages the results, making it less dependent on total text length [2].
+- **MTLD** measures how long a sequence can continue before TTR falls below a threshold, and has been shown to perform well in validation studies [3].
+- **HD-D** uses the hypergeometric distribution to estimate lexical diversity from random sampling behavior and is treated as a strong alternative to vocd-D [3].
+- **Maas** uses a logarithmic transformation of TTR to reduce raw length effects, though its interpretation differs because lower values indicate greater diversity [3][4].
+
+## What Prior Studies Found
+
+McCarthy and Jarvis validated MTLD and HD-D against competing lexical diversity measures and reported that MTLD was the only tested index in their study that did not vary as a function of text length, while HD-D emerged as a viable alternative to vocd-D [3]. Covington and McFall similarly introduced MATTR specifically to address the length-sensitivity problem of TTR and argued that it supports more reliable comparison between texts of different sizes [2].
+
+Fergadiotis, Wright, and Green later compared multiple lexical diversity indices using psychometric analysis and found that MTLD and MATTR were stronger indicators of lexical diversity than the alternatives they studied [4]. Jarvis also argued that lexical diversity should be treated as a multidimensional construct rather than reduced to one simplistic formula, which supports reporting multiple complementary measures in corpus studies [5].
+
+More recent work has continued to examine lexical diversity in genre prediction and corpus comparison tasks, showing that genre differences can indeed be captured through lexical diversity profiles when the metric choice is justified carefully [6].
+
+## How This Project Uses The Literature
+
+This project follows the literature in three ways:
+
+1. It avoids relying on raw TTR alone.
+2. It reports multiple lexical diversity measures, with MATTR, HD-D, and MTLD treated as the strongest headline metrics.
+3. It adds a stability experiment using repeated equal-length samples to directly test length sensitivity inside the project dataset.
+
+## References
+
+[1] Francis, W. N., & Kucera, H. Brown Corpus description. CoRD Brown Corpus page. https://varieng.helsinki.fi/CoRD/corpora/BROWN/
+
+[2] Covington, M. A., & McFall, J. D. (2010). *Cutting the Gordian Knot: The Moving-Average Type-Token Ratio (MATTR).* Journal of Quantitative Linguistics, 17(2), 94-100. https://doi.org/10.1080/09296171003643098
+
+[3] McCarthy, P. M., & Jarvis, S. (2010). *MTLD, vocd-D, and HD-D: A validation study of sophisticated approaches to lexical diversity assessment.* Behavior Research Methods, 42(2), 381-392. https://doi.org/10.3758/BRM.42.2.381
+
+[4] Fergadiotis, G., Wright, H. H., & Green, S. B. (2015). *Psychometric evaluation of lexical diversity indices: Assessing length effects.* Journal of Speech, Language, and Hearing Research, 58(3), 840-852. https://doi.org/10.1044/2015_JSLHR-L-14-0280
+
+[5] Jarvis, S. (2013). *Capturing the Diversity in Lexical Diversity.* Language Learning, 63(S1), 87-106. https://doi.org/10.1111/j.1467-9922.2012.00739.x
+
+[6] Jarvis, S., Kim, Y., Choi, I., & Staples, S. (2023). *Lexical diversity as a predictor of genre in TV shows.* Digital Scholarship in the Humanities, 38(3), 921-936. https://doi.org/10.1093/llc/fqad004

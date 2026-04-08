@@ -1,0 +1,25 @@
+# Lexical Diversity Measurement Across Genres
+
+## Natural Language Processing Project Submission
+
+**Submitted by:**  
+Ashish Singh
+
+**Subject:**  
+Natural Language Processing
+
+**Project Title:**  
+Lexical Diversity Measurement Across Genres
+
+**Dataset Used:**  
+Brown Corpus  
+Kaggle reference: https://www.kaggle.com/datasets/nltkdata/brown-corpus
+
+**Tools and Technologies:**  
+Python, NLTK, Pandas, Matplotlib
+
+**Core Focus Areas:**  
+Survey, Implementation, Analysis, Innovation
+
+**Submission Date:**  
+2026-04-08

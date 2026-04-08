@@ -1,0 +1,67 @@
+# 5-Slide PPT Outline
+
+## Slide 1: Title And Problem Statement
+
+**Title:** Lexical Diversity Measurement Across Genres
+
+- Measure how vocabulary diversity changes across Brown Corpus genres
+- Show why metric choice matters in lexical diversity studies
+- Dataset: Brown Corpus, 15 genres, 1,005,119 normalized tokens
+- Objective: compare classic and robust lexical diversity metrics
+
+**Speaker note:**  
+This project studies how lexical diversity varies across genres such as news, humor, fiction, government, and reviews. The main challenge is that some diversity metrics are strongly affected by text length, so fair comparison requires stronger methods than plain TTR.
+
+## Slide 2: Survey Of Literature
+
+- TTR is simple but highly sensitive to text length
+- MATTR reduces length bias using moving-window averaging
+- MTLD and HDD are validated robust alternatives
+- Literature supports using multiple complementary diversity measures
+
+**Citations to mention:**  
+- Covington & McFall (2010) for MATTR  
+- McCarthy & Jarvis (2010) for MTLD and HDD  
+- Fergadiotis et al. (2015) for psychometric evaluation  
+- Jarvis (2013) for lexical diversity as a multidimensional construct
+
+**Speaker note:**  
+The survey part of the project shows that raw TTR is not enough. Prior work consistently recommends more stable measures such as MATTR, HDD, and MTLD, especially when text lengths differ.
+
+## Slide 3: Implementation
+
+- Built in Python using NLTK, Pandas, and Matplotlib
+- Loaded Brown Corpus and normalized tokens genre-wise
+- Computed 8 lexical diversity metrics for each genre
+- Generated CSV tables, summary report, and plots automatically
+- Output files include rankings, correlations, composite scores, and charts
+
+**Speaker note:**  
+The implementation is fully reproducible. The script processes the corpus, computes metrics, and saves all outputs in the `results` folder. This gives both raw data and report-ready visualizations.
+
+## Slide 4: Analysis
+
+- Raw TTR has strong negative correlation with token count: `-0.764`
+- Top robust-metric genres: `humor`, `reviews`, `science_fiction`, `adventure`
+- Lowest robust-metric genres: `government`, `learned`, `religion`
+- Composite ranking top 3:
+- `humor` = 1.172
+- `reviews` = 1.080
+- `science_fiction` = 0.872
+
+**Speaker note:**  
+The analysis confirms that longer texts get penalized by TTR, so robust metrics give a fairer comparison. Across MATTR, HDD, and MTLD, humor and reviews consistently show higher lexical diversity, while government and learned show lower diversity.
+
+## Slide 5: Innovation And Conclusion
+
+- Innovation: repeated 10,000-token sampling stability experiment
+- Compared metric stability using coefficient of variation
+- Mean CV results:
+- HDD = 0.0071
+- MATTR = 0.0093
+- TTR = 0.0462
+- MTLD = 0.0678
+- Conclusion: HDD and MATTR are the most stable practical choices
+
+**Speaker note:**  
+This innovation goes beyond standard genre comparison. By repeatedly sampling equal-length windows, the project directly tests which metrics remain stable under controlled conditions. The result strengthens the conclusion that robust lexical diversity metrics should be preferred over raw TTR.

@@ -1,0 +1,19 @@
+# Brown Corpus Lexical Diversity Summary
+
+## Dataset
+- Genres analysed: 15
+- Total tokens analysed: 1005119
+- Corpus source: NLTK Brown Corpus
+
+## Key Findings
+- Highest MTLD genres: reviews (120.40), humor (113.98), adventure (105.34)
+- Highest HDD genres: science_fiction (0.881), humor (0.878), romance (0.877)
+- Lowest MTLD genres: government (65.43), learned (69.58), religion (76.71)
+- Token count vs TTR correlation: -0.764. This negative relationship shows why raw TTR is length-sensitive.
+- Short genres such as humor and science_fiction look unusually strong on plain TTR, while MTLD, MATTR, and HDD give a more stable comparison across unequal genre lengths.
+- Composite score leaders (MATTR + HDD + MTLD z-scores): humor (1.172), reviews (1.080), science_fiction (0.872)
+
+## Interpretation
+- Reviews and humor show the strongest lexical variety on the more robust metrics, suggesting denser vocabulary reuse patterns and broader word choice within shorter texts.
+- Government and learned writing score lower on MTLD despite large token counts, which is consistent with more repetitive technical and topic-focused vocabulary.
+- For an NLP classroom project, MATTR, HDD, and MTLD are the best headline metrics because they are less distorted by document length than simple TTR.
