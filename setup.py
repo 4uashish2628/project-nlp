@@ -1,22 +1,41 @@
-import setuptools
+from pathlib import Path
 
-with open("README.md", "r") as fh:
-    long_description = fh.read()
+from setuptools import find_packages, setup
 
-setuptools.setup(
-    name="lexical_diversity",
-    version="0.1.1",
-    author="Kristopher Kyle",
-    author_email="kristopherkyle1@gmail.com",
-    description="A simple program for calcuating lexical diversity",
-    long_description=long_description,
+
+PROJECT_ROOT = Path(__file__).resolve().parent
+README_PATH = PROJECT_ROOT / "README.md"
+REQUIREMENTS_PATH = PROJECT_ROOT / "requirements.txt"
+
+
+def read_requirements() -> list[str]:
+    return [
+        line.strip()
+        for line in REQUIREMENTS_PATH.read_text(encoding="utf-8").splitlines()
+        if line.strip() and not line.startswith("#")
+    ]
+
+
+setup(
+    name="lexical-diversity-project",
+    version="1.0.0",
+    author="Ashish Singh",
+    author_email="ashish2628singh@gmail.com",
+    description="NLP project for measuring lexical diversity across Brown Corpus genres",
+    long_description=README_PATH.read_text(encoding="utf-8"),
     long_description_content_type="text/markdown",
-    url="https://github.com/kristopherkyle/lexical_diversity",
-    packages=setuptools.find_packages(),
+    packages=find_packages(include=["lexical_diversity", "lexical_diversity.*"]),
     include_package_data=True,
+    install_requires=read_requirements(),
+    python_requires=">=3.9",
+    license="MIT",
+    project_urls={
+        "Dataset": "https://www.kaggle.com/datasets/nltkdata/brown-corpus",
+    },
     classifiers=[
         "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: MIT License",
+        "Programming Language :: Python :: 3.9",
         "Operating System :: OS Independent",
+        "Topic :: Text Processing :: Linguistic",
     ],
 )
